@@ -52,6 +52,9 @@ class BoardReader:
         if len(board_img.shape) == 3:
             board_img = cv2.cvtColor(board_img, cv2.COLOR_BGR2GRAY)
 
+        # resize the image to 400x400
+        board_img = cv2.resize(board_img, (400, 400))
+
         square_images = board2squares(board_img)
 
         inputs = [self.transform(square) for square in square_images]
